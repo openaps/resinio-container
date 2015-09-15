@@ -16,7 +16,7 @@ RUN activate-global-python-argcomplete
 
 #### **Install [mmglucosetools](https://github.com/loudnate/openaps-mmglucosetools)**
 #### **Install [openaps-predict](https://github.com/loudnate/openaps-predict)**
-RUN easy_install openapscontrib.mmhistorytools && easy_install openapscontrib.mmglucosetools && easy_install openapscontrib.predict
+RUN pip openapscontrib.mmhistorytools && easy_install openapscontrib.glucosetools && easy_install openapscontrib.predict
 
 RUN openaps --version
 
