@@ -1,7 +1,7 @@
 
 FROM resin/edison-python:latest
 
-RUN apt-get update && apt-get install -y python python-dev python-pip
+RUN apt-get update && apt-get install -y python python-dev python-pip ssh-import-id
 
 # Install Dropbear.
 RUN apt-get install -y dropbear

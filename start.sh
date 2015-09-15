@@ -9,6 +9,10 @@ dropbear -E -F &
 #if [[ -n "$MESH_OPENAPS" ]] ; then
 #fi
 
+if [[ -n "$IMPORT_GITHUB_USER" ]] ; then
+  ssh-import-id-gh $IMPORT_GITHUB_USER | tee -a /root/.ssh/authorized_keys
+fi
+
 export MESH_OPENAPS
 OPENAPS_HOME=${OPENAPS_HOME-/app/openaps}
 
