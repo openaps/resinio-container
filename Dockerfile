@@ -1,7 +1,7 @@
 
 FROM resin/edison-python:latest
 
-RUN apt-get update && apt-get install -y python python-dev python-pip ssh-import-id
+RUN apt-get update && apt-get install -y python python-dev python-pip ssh-import-id git python-setuptools python-software-properties python-numpy udev libudev1
 
 # Install Dropbear.
 RUN apt-get install -y dropbear
@@ -9,21 +9,14 @@ RUN pip install flask
 
 
 # Install openaps
-RUN apt-get install -y git python python-dev python-setuptools python-software-properties python-numpy
 RUN easy_install -ZU openaps
-## **Install udev-rules**
-RUN openaps-install-udev-rules
+# RUN openaps-install-udev-rules
 RUN activate-global-python-argcomplete
 
 
-
-RUN easy_install openapscontrib.mmhistorytools
-
 #### **Install [mmglucosetools](https://github.com/loudnate/openaps-mmglucosetools)**
-RUN easy_install openapscontrib.mmglucosetools
-
 #### **Install [openaps-predict](https://github.com/loudnate/openaps-predict)**
-RUN easy_install openapscontrib.predict
+RUN easy_install openapscontrib.mmhistorytools && easy_install openapscontrib.mmglucosetools && easy_install openapscontrib.predict
 
 RUN openaps --version
 
