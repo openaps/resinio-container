@@ -1,12 +1,14 @@
 
 FROM resin/edison-python:latest
 
-RUN apt-get update && apt-get install -y python python-dev python-pip ssh-import-id git python-setuptools python-software-properties python-numpy udev libudev1
+RUN apt-get update && apt-get install -y curl python python-dev python-pip ssh-import-id git python-software-properties python-numpy udev libudev1
 
 # Install Dropbear.
 RUN apt-get install -y dropbear
 RUN pip install flask
 
+RUN curl -s https://bootstrap.pypa.io/ez_setup.py | python
+RUN easy_install -ZU setuptools
 
 # Install openaps
 RUN easy_install -ZU openaps
